@@ -15,12 +15,15 @@ WARN = -ansi -Wall -Wno-unused -Wno-parentheses
 CFLAGS = $(OPT) $(WARN) $(DEFS) -I/usr/local/include
 # if you get undefined reference to `iconv_open' add this:
 # CFLAGS += -L/usr/local/lib -liconv
+CFLAGS += -L/data/data/com.termux/files/usr/lib -liconv
 # Or you may get rid off locale support completely:
 # CFLAGS += -DNO_LOCALE
 
 # install files with this ownership:
-owner=root
-group=wheel
+# owner=root
+# group=wheel
+owner=u0_a307
+group=u0_a307
 
 install_own = -o $(owner) -g $$Group
 INSTALL_DATA = install -c    $(install_own) -m 664
@@ -44,7 +47,8 @@ EXAMPLES = examples/profile examples/xsession examples/amortips
 MAN1	= $(Package).1
 #GZIPDOCS = yes
 SRCS    = $(BIN).c $(Package).spec.in Makefile INSTALL
-PREFIX  = /usr/local
+#PREFIX  = /usr/local
+PREFIX = /data/data/com.termux/files/usr
 prefix  = ${PREFIX}
 exec_prefix = $(prefix)
 bindir  = $(exec_prefix)/bin
@@ -60,8 +64,8 @@ all:	$(BIN) $(MAN1)
 
 $(BIN):
 
-$(MAN1):	$(Package).1.in
-	    sed -e's./usr/share/display-dhammapada.$(datadir).g;s./usr/share/doc/display-dhammapada.$(docsdir).g'	<$(Package).1.in >$(MAN1); \
+# $(MAN1):	$(Package).1.in
+#       sed -e's./usr/share/display-dhammapada.$(datadir).g;s./usr/share/doc/display-dhammapada.$(docsdir).g'	<$(Package).1.in >$(MAN1); \
 
 clean:
 	-rm  -R -f *.o *~ *.bak *.tmp.1 $(MAN1) 1 2 t tmp \#*\# errors* core* \

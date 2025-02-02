@@ -192,7 +192,9 @@ Print_verse (FILE * dp, char *end_mark)
      char *outptr;
 #endif
 
-     do
+     //while (strstr (s, end_mark) == NULL);
+     /* do */
+     for(int line=0; strstr (s, end_mark) == NULL; line++)
        {
             if (fgets (s, max_string_length, dp) == NULL)
                  if (feof (dp))
@@ -214,13 +216,15 @@ Print_verse (FILE * dp, char *end_mark)
 	      *outptr = '\0';
 	    }
 #endif
-            printf (" %s ", s);
+            if(line > 0) {
+              printf ("%s", s);
+            }
             printed_strings_counter++;
             if (printed_strings_counter > max_strings_in_verse)
                  Error (too_long_verse);
        }
-     while (strstr (s, end_mark) == NULL);
-     printf ("\n");
+     /* while (strstr (s, end_mark) == NULL); */
+     /* printf ("\n"); */
 }
 
 void

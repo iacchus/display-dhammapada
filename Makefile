@@ -48,7 +48,7 @@ MAN1	= $(Package).1
 #GZIPDOCS = yes
 SRCS    = $(BIN).c $(Package).spec.in Makefile INSTALL
 #PREFIX  = /usr/local
-PREFIX = /data/data/com.termux/files/usr/local
+PREFIX = /data/data/com.termux/files/usr
 prefix  = ${PREFIX}
 exec_prefix = $(prefix)
 bindir  = $(exec_prefix)/bin
@@ -64,7 +64,12 @@ all:	$(BIN) $(MAN1)
 
 $(BIN):
 
-# $(MAN1):	$(Package).1.in
+# FIXME
+$(MAN1):	$(Package).1.in
+	cp $(Package).1.in $(MAN1); \
+
+	# sed -e's/\/usr\/share\/display\-dhammapada/$(datadir)/g;s/\/usr\/share\/doc\/display-dhammapada/$(docsdir)/g'	<$(Package).1.in >$(MAN1); \
+
 #       sed -e's./usr/share/display-dhammapada.$(datadir).g;s./usr/share/doc/display-dhammapada.$(docsdir).g'	<$(Package).1.in >$(MAN1); \
 
 clean:
@@ -102,7 +107,8 @@ disttest:	$(DEBDIST)
 	cd /tmp/$(package)-$(VERSION) && rm $(DEBDIST)
 	rm -R -f /tmp/$(package)-$(VERSION)
 
-install:	all $(DOCS) $(MAN1)
+# install:	all $(DOCS) $(MAN1)
+install:	all $(DOCS)
 	set -o errexit; set -x; \
 		for group in $(group) wheel staff bin root; \
 		do if install -d -g $$group ./tstdir; \

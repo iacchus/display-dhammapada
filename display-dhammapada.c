@@ -14,13 +14,13 @@ static char c4[] = " No warranty. \n";
 #define max_string_length 278
 #define mark_length 5
 #ifndef DPPATHNAME
-#define DPPATHNAME "/usr/local/lib/display-dhammapada/dhammapada-english-transl.txt:/usr/lib/display-dhammapada/dhammapada-english-transl.txt"
+#define DPPATHNAME "/usr/local/lib/display-dhammapada/dhammapada-english-transl.txt:/usr/lib/display-dhammapada/dhammapada-english-transl.txt:/data/data/com.termux/files/usr/local/share/display-dhammapada/dhammapada-english-transl.txt"
 #endif
 #ifndef DPPATHNAME_ALT
-#define DPPATHNAME_ALT "/usr/local/lib/display-dhammapada/dhammapada-alternate.txt:/usr/lib/display-dhammapada/dhammapada-alternate.txt"
+#define DPPATHNAME_ALT "/usr/local/lib/display-dhammapada/dhammapada-alternate.txt:/usr/lib/display-dhammapada/dhammapada-alternate.txt:/data/data/com.termux/files/usr/local/share/display-dhammapada/dhammapada-alternate.txt"
 #endif
 #ifndef DPPATHNAME_PL
-#define DPPATHNAME_PL "/usr/local/lib/display-dhammapada/dhammapada-polish-transl.txt:/usr/lib/display-dhammapada/dhammapada-polish-transl.txt"
+#define DPPATHNAME_PL "/usr/local/lib/display-dhammapada/dhammapada-polish-transl.txt:/usr/lib/display-dhammapada/dhammapada-polish-transl.txt:/data/data/com.termux/files/usr/local/share/display-dhammapada/dhammapada-polish-transl.txt"
 #endif
 #ifndef NO_LOCALE
 #include <locale.h>
